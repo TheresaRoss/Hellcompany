@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   
+}
+@model IEnumerable<Workfromhell.Models.db.Employee>
+<h1 class="display-1">You are the drug that I addictted to</h1>
+<a asp-action="Create">Create New</a>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Joined</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EmployeeId </td>
+                <td>@item.Name </td>
+                <td>@item.Lastname </td>
+                <td>@item.Age </td>
+                <td>@item.Salary </td>
+                <td>@item.Joined </td>
+            </tr>
+        }
+    </tbody>
+</table>

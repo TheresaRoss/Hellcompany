@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Workfromhell.Models.db;
 
@@ -11,6 +12,7 @@ public partial class Employee
 
     public string? Lastname { get; set; }
 
+    [Range(1, 100,ErrorMessage = "Age should not exceed 100 or lower than 1")]
     public short? Age { get; set; }
 
     public double? Salary { get; set; }

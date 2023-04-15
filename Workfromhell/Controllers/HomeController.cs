@@ -20,7 +20,7 @@ namespace Workfromhell.Controllers
         {
             Console.WriteLine("Hello");
             var result = from i in _db.Customers select i;
-            Console.WriteLine(result.Count()); //better way ro check if query result is null or not
+            Console.WriteLine(result.Count()); //better way to check if query result is null or not
             if (result == null)
                 {
                     Console.WriteLine("Nothing");
