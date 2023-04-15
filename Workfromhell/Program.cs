@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Workfromhell.Models.db;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+builder.Services.AddDbContext<CompanyContext>(
+    option => option.UseSqlServer(builder.Configuration.GetConnectionString("Company")));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
