@@ -16,6 +16,9 @@
             <th>Age</th>
             <th>Salary</th>
             <th>Joined</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +31,13 @@
                 <td>@item.Age </td>
                 <td>@item.Salary </td>
                 <td>@item.Joined </td>
+                <td><a asp-action="Detail" asp-route-id="@item.EmployeeId">Details</a></td>
+                <td><a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a></td>
+                <td>  <form method="post" asp-action="Delete">
+                   
+                    <input type="hidden" name="id" value="@item.EmployeeId" />
+                    <button type="submit" class="">Delete</button>
+                </form></td>
             </tr>
         }
     </tbody>

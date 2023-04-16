@@ -21,9 +21,32 @@ namespace Workfromhell.Controllers
 
         public IActionResult Create()
         {
-            Console.WriteLine("Yo man");
+          
             //RedirectToAction("Index");
             return View();
+        }
+
+        public IActionResult Detail(int id)
+        {
+            //Console.WriteLine(id);
+            var em = _db.Employees.FirstOrDefault(m => m.EmployeeId == id);
+            if(em == null)
+            {
+                return NotFound();
+            }
+            return View(em);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            //Console.WriteLine(id);
+            var em = _db.Employees.FirstOrDefault(m => m.EmployeeId == id);
+            if (em == null)
+            {
+                return NotFound();
+            }
+            return View(em);
+
         }
 
         [HttpPost]
@@ -43,6 +66,39 @@ namespace Workfromhell.Controllers
                 return RedirectToAction("Index");
 
             }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Name,Lastname,Age,Joined")] Employee employee)
+        {
+            Console.WriteLine("ID to update {0}",id);
+            if (ModelState.IsValid)
+            {
+                Console.WriteLine("Validate!!!");
+                _db.Update(employee);  //Need primary key to know which element to update, If there are no primary key
+                //it will create new entry in database
+                await _db.SaveChangesAsync();
+                
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var em = await _db.Employees.FindAsync(id);
+            if (em == null)
+            {
+                return NotFound();
+            }
+
+            _db.Employees.Remove(em);
+            await _db.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
     }

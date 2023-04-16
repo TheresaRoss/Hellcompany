@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Workfromhell.Models.db.Employee;
+<h1 class="text-danger"> Welcome to details</h1>
+<div class="container">
+<div>Employee ID: @Html.DisplayFor(model => model.EmployeeId)</div>
+
+<div class="col">Firstname: @Html.DisplayFor(model => model.Name)</div>
+<div class="col">Lastname: @Html.DisplayFor(model => model.Lastname)</div>
+
+
+<div class="col">Age: @Html.DisplayFor(model => model.Age)</div>
+<div class="col">Position: @Html.DisplayFor(model => model.Position)</div>
+<div class="col">Joined Date: @Html.DisplayFor(model => model.Joined)</div>
+
+</div>
